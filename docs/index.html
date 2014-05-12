@@ -17,7 +17,7 @@
 <body>
 <header>
 <div class="headerCore">
-	<h1 class="logo"><strong>MTimer Server</strong> <span>—</span> LNMPA Script 安装 &amp; 管理脚本 3.0 <a href="cn/index.html">中文</a></h1> 
+	<h1 class="logo"><strong>MTimer Server</strong> <span>—</span> LNMPA Script 3.0 <a href="cn/">中文</a></h1> 
 
 	<div class="yashare-auto-init"></div> 
 
@@ -31,15 +31,49 @@
 <div id="wrapper">
 	<div id="content">
 		<section>
-	<h1><span>Family<a href="#mainInfo" title="LNMP Family" class="about fancybox"></a></span></h1>
+	<h1><span>Family<a href="#mainInfo" title="LNMPA Family" class="about fancybox"></a></span></h1>
 	<div id="mainInfo" class="upCont">
-		<strong class="modalTitle">LNMPA</strong>
+		<strong class="modalTitle">MTimer Server</strong>
 		<div class="section">
-			<h3>What is LNMPA?</h3>
-			<p></p><p></p>		</div>
+			<h3>What is MTimer Server?</h3>
+			<p>LNMPA Script - help you install Apache/Nginx + Mysql/MariaDB + PHP on your VPS or Dedicated Server.</p><p>It's the most powerful LNMPA script out there.</p>		</div>
 		<div class="section">
-			<h3></h3>
-			<pre><code></code></pre>		</div>
+			<h3>Below is the layout of MTimer Server.</h3>
+			<pre>
+/mtimer [ALL]
+	-----log [Logs location]
+		--nginx
+		--httpd
+		--php
+		--mysql
+		--mariadb
+	-----server [All kinds of Servers]
+		--nginx
+			--conf [Nginx configuration files location]
+				--nginx.conf    ——     nginx configuration file
+				--rewrite       ——     rewrite configuration files location
+				--vhosts        ——     vhosts configuration files location
+				--crons         ——     cron files location
+		--httpd
+			--conf [httpd configuration files location]
+				--httpd.conf    ——     main configuration file
+				--vhosts        ——     vhosts, eg. example.com.conf
+			--conf.d            ——     other configuration files directory, eg. mod_fastcgi.conf [Apache + php 4/5]
+			--crons             ——     cron files location
+		--php
+			--etc [PHP configuration files location]
+				--php-fpm.conf  ——     PHP-FPM configuration file
+				--php.ini       ——     PHP configuration file
+		--mysql                 ——     Note：my.cnf located @ /etc/my.cnf
+		--mariadb
+
+	-----www [*Websites Directory*, containg all websites]
+		--example.com           ——     Default website root directory
+		--soft.example.com      ——     Another website root directory. 
+                                           If Nginx, Fancyindex enabled by default.
+		--phpmyadmin            ——     phpMyAdmin, Access via http://Yourdomain:7772/
+		--adminer               ——     Adminer, Access via http://Yourdomain:7771/
+			</pre>		</div>
 	</div>
 
 
@@ -52,20 +86,20 @@
 		<div id="apache" class="upCont">
 			<strong class="modalTitle">Server {Apache}</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
-				<p></p>
+				<h3>Support Versions</h3>
+				<p>Apache 2.2.X</p>
+				<p>Apache 2.4.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
+				<h3>Apache Multi-Processing Module</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v2.2.X</td>
+							<td>prefork - the only option</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v2.4.X</td>
+							<td>event - default. Apache compiled with --enable-mpm-shared option, so you change mpm.</td>
 						</tr>
 					</table>
 			</div>
@@ -79,19 +113,10 @@
 		<div id="nginx" class="upCont">
 			<strong class="modalTitle">Server {Nginx}</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>Support Versions</h3>
+				<p>Always latested stable version since there is no need to use old nginx</p>
 			</div>
-			<div class="section">
-				<h3></h3>
-					<table class="uses">
-						<tr>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-			</div>
-			<div class="download"><a class="exLink" href="/example/nginxhelp.txt">Help!</a></div>
+			<!--<div class="download"><a class="exLink" href="/example/nginxhelp.txt">Help!</a></div>-->
 		</div>
 
 
@@ -102,17 +127,13 @@
 		<div id="mysql" class="upCont">
 			<strong class="modalTitle">Server {MySQL}</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>Support Versions</h3>
+				<p>v5.1.X</p>
+				<p>v5.5.X</p>
+				<p>v5.6.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
-					<table class="uses">
-						<tr>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
+				<h3>MySQL is the default option, but you can switch to MariaDB which is opensource.</h3>
 			</div>
 		</div>
 
@@ -124,17 +145,24 @@
 		<div id="mariadb" class="upCont">
 			<strong class="modalTitle">Server {MariaDB}</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
-			</div>
-			<div class="section">
-				<h3></h3>
+				<h3>Support Versions</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v5.3.X</td>
+							<td>same as MySQL v5.1.X</td>
+						</tr>
+						<tr>
+							<td>v5.5.X</td>
+							<td>same as MySQL v5.5.X</td>
+						</tr>
+						<tr>
+							<td>v10.0.X</td>
+							<td>same as MySQL v5.6.X</td>
 						</tr>
 					</table>
+			</div>
+			<div class="section">
+				<h3>It's almost the same as MySQL. But it's just the better option. </h3>
 			</div>
 		</div>
 
@@ -146,24 +174,91 @@
 		<div id="php" class="upCont">
 			<strong class="modalTitle">Server {PHP}</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>Support Versions</h3>
+				<p>v5.3.X</p>
+				<p>v5.4.X</p>
+				<p>v5.5.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
+				<h3>The way PHP works with webserver</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>PHP v5.3.X</td>
+							<td>Apache - mod_php; Nginx - PHP-FPM</td>
+						</tr>
+						<tr>
+							<td>PHP v5.4.X</td>
+							<td>PHP-FPM</td>
+						</tr>
+						<tr>
+							<td>PHP v5.5.X</td>
+							<td>PHP-FPM</td>
 						</tr>
 					</table>
 			</div>
 		</div>
 
 
+		<!-- Control -->
+		<a href="#control" title="Control" class="fancybox box">
+			<b>Control</b>
+			PHP		</a>
+		<div id="control" class="upCont">
+			<strong class="modalTitle">Control Servers</strong>
+			<div class="section">
+				<h3>It's easy.</h3>
+					<table class="uses">
+						<tr>
+							<td>Apache</td>
+							<td>service httpd (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>Nginx</td>
+							<td>service nginx (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>MySQL/MariaDB</td>
+							<td>service mysql (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>PHP</td>
+							<td>mod_php: same as Apache.  PHP-FPM: service php-fpm (start | stop | reload | restart)</td>
+						</tr>
+					</table>
+			</div>
+		</div>
+
+
+		<!-- License -->
+		<a href="#license" title="License" class="fancybox box">
+			<b>License</b>
+			License		</a>
+		<div id="license" class="upCont">
+			<strong class="modalTitle">Script License</strong>
+			<div class="section">
+				<h3>Copyright (C) <2014>  &lt;MTimer&gt; (http://www.mtimer.cn)</h3>
+					<pre>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+					</pre>
+			</div>
+		</div>
+
+
 		<!-- More -->
 		<a href="#contentScroll" class="anchor box">
-			<b>{More}</b>
+			<b>Do you like it?</b>
 					</a>
 	</div>
 
@@ -193,16 +288,47 @@
 
 
 	</section>
-	<section><a name="otherScroll"></a>
+
+
 	<h1><span>Credits<a href="#otherInfo" title="Thanks to all" class="about fancybox"></a></span></h1>
 	<div id="otherInfo" class="upCont">
 		<strong class="modalTitle">Credits</strong>
 		<div class="section">
+				<h3>Thanks to all.</h3>
+					<table class="uses">
+						<tr>
+							<td>Aliyun LNMP</td>
+							<td>aliyun.com</td>
+						</tr>
+						<tr>
+							<td>LNMP 1.0</td>
+							<td>lnmp.org</td>
+						</tr>
+						<tr>
+							<td>Extreme lnmpv 0.4 preview</td>
+							<td>yzs.me</td>
+						</tr>
+						<tr>
+							<td>centmin-v1.2.3</td>
+							<td>centminmod.com</td>
+						</tr>
+						<tr>
+							<td>WangYan lanmp</td>
+							<td>github.com/wangyan/lanmp</td>
+						</tr>
+						<tr>
+							<td>Minstall</td>
+							<td>github.com/maxexcloo/Minstall</td>
+						</tr>
+						<tr>
+							<td>DirectAdmin</td>
+							<td>directadmin.com</td>
+						</tr>
+					</table>
 		</div>
 	</div>
 
 
-	</section>
 	</div>
 
 	<div class="testTemplate">
@@ -210,7 +336,10 @@
 		<p><span class="vers">Pro version support change MySQL/MariaDB, Apache/Nginx, PHP versions after installation.</span></p>
 		<a class="fancybox" href="#test">Need help?</a>
 		<div id="test" class="upCont">
-		Email: mtimercms@hotmail.com
+		<p>Email: mtimercms@hotmail.com</p>
+		<p>Donate: </p>
+		      <p>[Paypal/Payza] mtimercms@hotmail.com</p>
+		      <p>[Webmoney] Z369907552397</p>
 		</div>
 	</div>
 

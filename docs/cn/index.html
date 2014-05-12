@@ -17,12 +17,12 @@
 <body>
 <header>
 <div class="headerCore">
-	<h1 class="logo"><strong>MTimer Server</strong> <span>—</span> LNMPA Script 安装 &amp; 管理脚本 3.0 <a href="/cn/">中文</a></h1> 
+	<h1 class="logo"><strong>MTimer Server</strong> <span>—</span> LNMPA 安装脚本 3.0 <a href="../">English</a></h1> 
 
 	<div class="yashare-auto-init"></div> 
 
 	<div title="MTimer Server Version and Help" class="MTServerVer">ver 3.0</div>
-	<a class="changes fancybox fancybox.ajax" href="http://api.mtimer.cn/lnmpa/ver.php">Changes</a>
+	<a class="changes fancybox fancybox.ajax" href="http://api.mtimer.cn/lnmpa/ver.php">更新历史</a>
 </div>
 </header>
 
@@ -31,15 +31,48 @@
 <div id="wrapper">
 	<div id="content">
 		<section>
-	<h1><span>Family<a href="#mainInfo" title="LNMP Family" class="about fancybox"></a></span></h1>
+	<h1><span>成员<a href="#mainInfo" title="LNMPA 成员" class="about fancybox"></a></span></h1>
 	<div id="mainInfo" class="upCont">
-		<strong class="modalTitle">LNMPA</strong>
+		<strong class="modalTitle">MTimer Server</strong>
 		<div class="section">
-			<h3>What is LNMPA?</h3>
-			<p></p><p></p>		</div>
+			<h3>什么是 MTimer Server?</h3>
+			<p>LNMPA 安装脚本 - 帮助你在 VPS 或独立服务器上安装 Apache/Nginx + Mysql/MariaDB + PHP 。</p><p>它是当前最强大的 LNMPA 脚本。</p>		</div>
 		<div class="section">
-			<h3></h3>
-			<pre><code></code></pre>		</div>
+			<h3>下面是 MTimer Server 的布局 </h3>
+			<pre>
+/mtimer [总目录]
+	-----log [日志目录]
+		--nginx
+		--httpd
+		--php
+		--mysql
+		--mariadb
+	-----server [各种 Server]
+		--nginx
+			--conf [Nginx 配置文件目录]
+				--nginx.conf    ——     nginx 主配置文件
+				--rewrite       ——     子网站rewrite规则文件目录
+				--vhosts        ——     子网站配置文件目录
+				--crons         ——     定时任务脚本目录
+		--httpd
+			--conf [httpd 配置文件目录]
+				--httpd.conf    ——     apache 主配置文件
+				--vhosts        ——     网站配置文件目录，比如 example.com.conf
+			--conf.d            ——     各种其他配置文件，比如 mod_fastcgi.conf [Apache + php 4/5]
+			--crons             ——     定时任务脚本目录
+		--php
+			--etc [PHP 相关配置文件目录]
+				--php-fpm.conf  ——     PHP-FPM 配置文件
+				--php.ini       ——     PHP 配置文件
+		--mysql                 ——     注意：my.cnf 在 /etc/my.cnf
+		--mariadb
+
+	-----www [*网站主目录*，子网站存放在每个子目录]
+		--example.com           ——     网站公开目录
+		--soft.example.com      ——     子网站目录，如果装的是 Nginx, 这个目录默认开启 Fancyindex
+		--phpmyadmin            ——     phpMyAdmin 目录，使用 http://你的域名:7772/访问
+		--adminer               ——     Adminer 目录，使用 http://你的域名:7771/访问
+			</pre>		</div>
 	</div>
 
 
@@ -50,22 +83,22 @@
 			<b>{Apache}</b>
 			Apache		</a>
 		<div id="apache" class="upCont">
-			<strong class="modalTitle">Server {Apache}</strong>
+			<strong class="modalTitle">{Apache} 服务</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
-				<p></p>
+				<h3>可选版本</h3>
+				<p>Apache 2.2.X</p>
+				<p>Apache 2.4.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
+				<h3>Apache 多任务处理模块 MPM</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v2.2.X</td>
+							<td>prefork - 唯一选项</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v2.4.X</td>
+							<td>event - 默认。 Apache 编译了选项 --enable-mpm-shared, 你可以动态加载其他 MPM。</td>
 						</tr>
 					</table>
 			</div>
@@ -77,21 +110,12 @@
 			<b>{Nginx}</b>
 			Nginx		</a>
 		<div id="nginx" class="upCont">
-			<strong class="modalTitle">Server {PTC Evolution}</strong>
+			<strong class="modalTitle">{Nginx} 服务</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>可选版本</h3>
+				<p>始终最新稳定版本，因为你没必要用老版本的 Nginx。</p>
 			</div>
-			<div class="section">
-				<h3></h3>
-					<table class="uses">
-						<tr>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-			</div>
-			<div class="download"><a class="exLink" href="/example/nginxhelp.txt">Help!</a></div>
+			<!--<div class="download"><a class="exLink" href="/example/nginxhelp.txt">Help!</a></div>-->
 		</div>
 
 
@@ -100,19 +124,15 @@
 			<b>{MySQL}</b>
 			MySQL		</a>
 		<div id="mysql" class="upCont">
-			<strong class="modalTitle">Server {MySQL}</strong>
+			<strong class="modalTitle">{MySQL} 服务</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>可选版本</h3>
+				<p>v5.1.X</p>
+				<p>v5.5.X</p>
+				<p>v5.6.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
-					<table class="uses">
-						<tr>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
+				<h3>MySQL 是默认安装的, 但是你可以选择 MariaDB 分支，开源更强大。</h3>
 			</div>
 		</div>
 
@@ -122,19 +142,26 @@
 			<b>{MariaDB}</b>
 			MariaDB		</a>
 		<div id="mariadb" class="upCont">
-			<strong class="modalTitle">Server {AJAX}</strong>
+			<strong class="modalTitle">{MariaDB} 服务</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
-			</div>
-			<div class="section">
-				<h3></h3>
+				<h3>可选版本</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>v5.3.X</td>
+							<td>和 MySQL v5.1.X 一样</td>
+						</tr>
+						<tr>
+							<td>v5.5.X</td>
+							<td>和 MySQL v5.5.X 一样</td>
+						</tr>
+						<tr>
+							<td>v10.0.X</td>
+							<td>和 MySQL v5.6.X 一样</td>
 						</tr>
 					</table>
+			</div>
+			<div class="section">
+				<h3>和 MySQL 差不多，但是开源而且是更好的选择。</h3>
 			</div>
 		</div>
 
@@ -144,35 +171,102 @@
 			<b>{PHP}</b>
 			PHP		</a>
 		<div id="php" class="upCont">
-			<strong class="modalTitle">Server {PHP}</strong>
+			<strong class="modalTitle">{PHP} 服务</strong>
 			<div class="section">
-				<h3></h3>
-				<p></p>
+				<h3>可选版本</h3>
+				<p>v5.3.X</p>
+				<p>v5.4.X</p>
+				<p>v5.5.X</p>
 			</div>
 			<div class="section">
-				<h3></h3>
+				<h3>PHP 和 Apache/Nginx 交互方式</h3>
 					<table class="uses">
 						<tr>
-							<td></td>
-							<td></td>
+							<td>PHP v5.3.X</td>
+							<td>Apache - mod_php; Nginx - PHP-FPM</td>
+						</tr>
+						<tr>
+							<td>PHP v5.4.X</td>
+							<td>PHP-FPM</td>
+						</tr>
+						<tr>
+							<td>PHP v5.5.X</td>
+							<td>PHP-FPM</td>
 						</tr>
 					</table>
 			</div>
 		</div>
 
 
+		<!-- Control -->
+		<a href="#control" title="Control" class="fancybox box">
+			<b>控制</b>
+			PHP		</a>
+		<div id="control" class="upCont">
+			<strong class="modalTitle">控制服务</strong>
+			<div class="section">
+				<h3>相当简单。</h3>
+					<table class="uses">
+						<tr>
+							<td>Apache</td>
+							<td>service httpd (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>Nginx</td>
+							<td>service nginx (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>MySQL/MariaDB</td>
+							<td>service mysql (start | stop | reload | restart)</td>
+						</tr>
+						<tr>
+							<td>PHP</td>
+							<td>mod_php 模式下: 和 Apache 一样。 PHP-FPM 下: service php-fpm (start | stop | reload | restart)</td>
+						</tr>
+					</table>
+			</div>
+		</div>
+
+
+		<!-- License -->
+		<a href="#license" title="License" class="fancybox box">
+			<b>版权</b>
+			License		</a>
+		<div id="license" class="upCont">
+			<strong class="modalTitle">Script License</strong>
+			<div class="section">
+				<h3>Copyright (C) <2014>  &lt;MTimer&gt; (http://www.mtimer.cn)</h3>
+					<pre>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+					</pre>
+			</div>
+		</div>
+
+
 		<!-- More -->
 		<a href="#contentScroll" class="anchor box">
-			<b>{More}</b>
+			<b>你喜欢吗?</b>
 					</a>
 	</div>
 
 	</section>
 	<section><a name="contentScroll"></a>
-	<h1><span>{Comments}<b></b></span></h1>
+	<h1><span>{评论}<b></b></span></h1>
 
 	<div id="aboutInfo" class="">
-		<strong class="modalTitle">Comments</strong>
+		<strong class="modalTitle">评论</strong>
 		<div class="section">
 		    <div id="disqus_thread"></div>
 		    <script type="text/javascript">
@@ -193,24 +287,59 @@
 
 
 	</section>
-	<section><a name="otherScroll"></a>
-	<h1><span>Credits<a href="#otherInfo" title="Thanks to all" class="about fancybox"></a></span></h1>
+
+
+	<h1><span>感谢<a href="#otherInfo" title="Thanks to all" class="about fancybox"></a></span></h1>
 	<div id="otherInfo" class="upCont">
-		<strong class="modalTitle">Credits</strong>
+		<strong class="modalTitle">感谢</strong>
 		<div class="section">
+				<h3>虽然人人都可以写 LNMPA 脚本，但是要写全写规范还是不容易的。借鉴了许多 LNMPA 脚本和教程，感谢名单如下，不分先后：</h3>
+					<table class="uses">
+						<tr>
+							<td>Aliyun LNMP</td>
+							<td>aliyun.com</td>
+						</tr>
+						<tr>
+							<td>LNMP 1.0</td>
+							<td>lnmp.org</td>
+						</tr>
+						<tr>
+							<td>Extreme lnmpv 0.4 preview</td>
+							<td>yzs.me</td>
+						</tr>
+						<tr>
+							<td>centmin-v1.2.3</td>
+							<td>centminmod.com</td>
+						</tr>
+						<tr>
+							<td>WangYan lanmp</td>
+							<td>github.com/wangyan/lanmp</td>
+						</tr>
+						<tr>
+							<td>Minstall</td>
+							<td>github.com/maxexcloo/Minstall</td>
+						</tr>
+						<tr>
+							<td>DirectAdmin</td>
+							<td>directadmin.com</td>
+						</tr>
+					</table>
 		</div>
 	</div>
 
 
-	</section>
 	</div>
 
 	<div class="testTemplate">
-		<a class="testLink" href="http://www.mtimer.cn/">Donate For Premium Version</a>
-		<p><span class="vers">Pro version support change MySQL/MariaDB, Apache/Nginx, PHP versions after installation.</span></p>
-		<a class="fancybox" href="#test">Need help?</a>
+		<a class="testLink" href="http://www.mtimer.cn/?do=donate">捐助并获得高级版</a>
+		<p><span class="vers">高级版本允许在安装完成后更改 MySQL/MariaDB, Apache/Nginx, PHP 的版本。</span></p>
+		<a class="fancybox" href="#test">需要帮助?</a>
 		<div id="test" class="upCont">
-		Email: mtimercms@hotmail.com
+		<p>Email: mtimercms@hotmail.com</p>
+		<p>捐助方式: </p>
+		      <p>[Paypal/Payza] mtimercms@hotmail.com</p>
+		      <p>[Webmoney] Z369907552397</p>
+		      <p>支付宝：http://www.mtimer.cn/?do=donate</p>
 		</div>
 	</div>
 
@@ -219,16 +348,16 @@
 	</div>
 </div>
 
-<footer>BY MTimer — <a href="mailto:mtimercms@hotmail.com">mtimercms@hotmail.com</a>
-<a rel="nofollow" target="_blank" class="sourse" href="http://www.mtimer.cn/">Source</a>
+<footer>作者: MTimer — <a href="mailto:mtimercms@hotmail.com">mtimercms@hotmail.com</a>
+<a rel="nofollow" target="_blank" class="sourse" href="http://www.mtimer.cn/">来源</a>
 </footer>
 
 
 <!-- SCRIPTS -->
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="../js/jquery-1.10.2.min.js"><\/script>')</script>
 
-<script src="js/mod.js"></script>
+<script src="../js/mod.js"></script>
 <script type="text/javascript">
 $(function(){ 
 	$('.cont').masonry({
