@@ -18,6 +18,20 @@ thread_cache_size = 8
 query_cache_size= 16M
 # Try number of CPU's*2 for thread_concurrency
 #thread_concurrency = 8
+# Add By MTimer Start
+pid-file = /tmp/mysql.pid
+back_log = 500
+datadir		= /mtimer/server/mariadb/data
+default-storage-engine = InnoDB
+character_set_server = utf8
+tmpdir		= /tmp/
+
+log-error = /mtimer/log/mariadb/mariadb_error.log
+slow-query-log = 1
+long_query_time= 5
+slow_query_log_file = /mtimer/log/mariadb/mariadb_slow.log
+#log-queries-not-using-indexes
+# Add By MTimer End
 
 #skip-networking
 #log-bin=mysql-bin
@@ -31,12 +45,15 @@ innodb_log_group_home_dir = /mtimer/server/mariadb/data
 # You can set .._buffer_pool_size up to 50 - 80 %
 # of RAM but beware of setting memory usage too high
 innodb_buffer_pool_size = 16M
-innodb_additional_mem_pool_size = 2M
+#innodb_additional_mem_pool_size = 2M
 # Set .._log_file_size to 25 % of buffer pool size
 innodb_log_file_size = 5M
 innodb_log_buffer_size = 8M
 innodb_flush_log_at_trx_commit = 1
 innodb_lock_wait_timeout = 50
+# Add By MTimer Start
+innodb_file_per_table = 1
+# Add By MTimer End
 
 [mysqldump]
 quick
@@ -53,19 +70,3 @@ write_buffer = 2M
 
 [mysqlhotcopy]
 interactive-timeout
-
-# Add By MTimer
-pid-file = /tmp/mysql.pid
-back_log = 500
-datadir		= /mtimer/server/mariadb/data
-default-storage-engine = InnoDB
-character_set_server = utf8
-tmpdir		= /tmp/
-
-log-error = /mtimer/log/mariadb/mariadb_error.log
-slow-query-log = 1
-long_query_time= 5
-slow_query_log_file = /mtimer/log/mariadb/mariadb_slow.log
-#log-queries-not-using-indexes
-
-innodb_file_per_table = 1
