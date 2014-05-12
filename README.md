@@ -65,7 +65,7 @@ wget -c --tries=3 -O lnmpa-latest-en.sh http://mtimercms.oss.aliyuncs.com/LNMPA-
 
   Press【Enter】 if you dont want to choose anything：
 
-  		Nginx + MYSQL 5.6 + PHP 5.3
+  		Nginx + MYSQL 5.6 + PHP 5.3 will be installed by default
 
   **REPEAT**：
 
