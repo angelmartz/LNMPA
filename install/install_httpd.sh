@@ -10,7 +10,8 @@ case "$APACHETODO" in
 		--enable-mods-shared=most \
 		--enable-ssl=shared \
 		--disable-ipv6 \
-		--with-mpm=prefork
+		--with-mpm=prefork \
+		--with-pcre=/usr/local/bin/pcre-config
 	;;
 	4)
 	./configure \
@@ -21,7 +22,8 @@ case "$APACHETODO" in
 		--enable-mpm-shared=all \
 		--enable-ssl=shared \
 		--disable-ipv6 \
-		--with-mpm=event
+		--with-mpm=event \
+		--with-pcre=/usr/local/bin/pcre-config
 	;;
 esac
 

@@ -17,6 +17,8 @@ case "$PHPTODO" in
 				--with-apxs2=/mtimer/server/httpd/bin/apxs \
 				--with-freetype-dir=/usr/local/${freetype_dir} \
 				--with-jpeg-dir=/usr/local/jpeg.6 \
+				--with-pcre-regex=/usr/local \
+				--with-pcre-dir=/usr/local \
 				--with-libxml-dir=/usr \
 				--with-png-dir \
 				--with-mysql=mysqlnd \
@@ -59,6 +61,8 @@ case "$PHPTODO" in
 				--with-config-file-scan-dir=/mtimer/server/php/etc/conf.d \
 				--with-freetype-dir=/usr/local/${freetype_dir} \
 				--with-jpeg-dir=/usr/local/jpeg.6 \
+				--with-pcre-regex=/usr/local \
+				--with-pcre-dir=/usr/local \
 				--with-libxml-dir=/usr \
 				--with-png-dir \
 				--with-mysql=mysqlnd \
@@ -102,6 +106,8 @@ case "$PHPTODO" in
 			--with-config-file-scan-dir=/mtimer/server/php/etc/conf.d \
 			--with-freetype-dir=/usr/local/${freetype_dir} \
 			--with-jpeg-dir=/usr/local/jpeg.6 \
+			--with-pcre-regex=/usr/local \
+			--with-pcre-dir=/usr/local \
 			--with-libxml-dir=/usr \
 			--with-png-dir \
 			--with-mysql=mysqlnd \

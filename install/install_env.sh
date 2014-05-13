@@ -101,7 +101,7 @@ make install
 
 
 Downloadfile lib-web/pcre/${pcre_dir}.tar.gz
-./configure
+./configure --enable-utf8 --enable-unicode-properties --disable-shared
 make
 make install
 ln -s /usr/local/lib/libpcre.so.1 /lib

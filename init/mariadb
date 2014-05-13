@@ -311,6 +311,8 @@ case "$mode" in
         touch "$lock_file_path"
       fi
 
+      mysqld_pid=`cat $mysqld_pid_file_path`
+      echo -17 > /proc/$mysqld_pid/oom_adj
       exit $return_value
     else
       log_failure_msg "Couldn't find MySQL server ($bindir/mysqld_safe)"
@@ -341,8 +343,7 @@ case "$mode" in
       then
         rm -f "$lock_file_path"
       fi
-      mysqld_pid=`cat $mysqld_pid_file_path`
-      echo -17 > /proc/$mysqld_pid/oom_adj
+
       exit $return_value
     else
       log_failure_msg "MySQL server PID file could not be found!"
