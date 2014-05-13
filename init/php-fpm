@@ -73,6 +73,9 @@ case "$1" in
 			exit 1
 		else
 			echo " done"
+
+			phpfpm_pid=`cat $php_fpm_PID`
+			echo -17 > /proc/$phpfpm_pid/oom_adj
 		fi
 	;;
 

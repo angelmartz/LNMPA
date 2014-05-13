@@ -126,5 +126,12 @@ fullstatus)
     ERROR=$?
 esac
 
+case $ARGV in
+start|restart)
+    httpd_pid=`cat $server_pid_file`
+    echo -17 > /proc/$httpd_pid/oom_adj
+    ;;
+esac
+
 exit $ERROR
 

@@ -343,6 +343,8 @@ case "$mode" in
       then
         touch /var/lock/subsys/mysql
       fi
+      mysqld_pid=`cat $server_pid_file`
+      echo -17 > /proc/$mysqld_pid/oom_adj
       exit $return_value
     else
       log_failure_msg "Couldn't find MySQL manager ($manager) or server ($bindir/mysqld_safe)"

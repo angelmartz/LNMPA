@@ -70,6 +70,9 @@ start() {
         RETVAL=$?
         echo
         [ $RETVAL = 0 ] && touch ${lockfile}
+        
+    	httpd_pid=`cat $server_pid_file`
+    	echo -17 > /proc/$httpd_pid/oom_adj
         return $RETVAL
 }
 
