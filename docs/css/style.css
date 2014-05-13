@@ -126,18 +126,18 @@ h2 {color:#959595;font-size:25px;font-weight:normal;margin:0 0 20px;}
 .comments {width:800px;margin:0 auto 40px;}
 
 /* Foo */
-footer {margin:0 40px;padding:20px 0;border-top:1px solid #eee;color:#D0D0D0;}
+footer {margin:-80px 40px 0 40px;padding:20px 0;border-top:1px solid #eee;color:#D0D0D0;}
 footer a {color:#D0D0D0;}
 footer a:hover {color:#BCBCBC;}
 
 
 /* templates changes */
-.dleChanges {list-style:none;}
-.dleChanges li {padding:3px 0;display:inline-block;margin:0 0px 10px 0;}
-.dleChanges li:after {content:"\2190";display:inline-block;margin-left:10px;font-family:Arial;font-size:20px;}
-.dleChanges li:last-child:after {content:"";}
-.dleChanges li a {text-decoration:none;}
-.dleChanges li a:hover {text-decoration:underline;color:#443;}
+.mtmChanges {list-style:none;}
+.mtmChanges li {padding:3px 0;display:inline-block;margin:0 0px 10px 0;}
+.mtmChanges li:after {content:"\2190";display:inline-block;margin-left:10px;font-family:Arial;font-size:20px;}
+.mtmChanges li:last-child:after {content:"";}
+.mtmChanges li a {text-decoration:none;}
+.mtmChanges li a:hover {text-decoration:underline;color:#443;}
 
 
 /* version history */
