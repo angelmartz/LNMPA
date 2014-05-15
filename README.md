@@ -1,7 +1,7 @@
-LNMPA [Apache/Nginx|MYSQL/MariaDB|PHP] Installer
+LNMPA Apache/Nginx+MYSQL/MariaDB+PHP
 ========================
 
- Copyright (C) <2014>  MTimer (http://www.mtimer.cn)
+ Copyright (C) &lt;2014&gt;  MTimer (http://www.mtimer.cn)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ LNMPA [Apache/Nginx|MYSQL/MariaDB|PHP] Installer
 
 ## All files
 
- - /mtimer/       ——		 This directory contains all
+/mtimer/       ——		 This directory contains all
  - 	   log/		    ——		 Save logs files
  -     node/		  ——		 git		-    Optional
  -     server/	  ——     Servers mysql/mariadb|httpd/nginx|php
@@ -48,7 +48,7 @@ Website: http://www.mtimer.cn
 
 Thanks to many friends
 
-See CREDITS: http://www.mtimer.cn
+See CREDITS
 
 
 
@@ -67,7 +67,7 @@ wget -c --tries=3 -O lnmpa-latest-en.sh http://mtimercms.oss.aliyuncs.com/LNMPA-
 
   		Nginx + MYSQL 5.6 + PHP 5.3 will be installed by default
 
-  **REPEAT**：
+  **Attention**：
 
   		PHP runs BY PHP-FPM excepting that in PHP 5.3 + Apache circumstance, PHP run as mod_php of Apache.
 
@@ -172,8 +172,8 @@ wget -c --tries=3 -O lnmpa-latest-en.sh http://mtimercms.oss.aliyuncs.com/LNMPA-
       --example.com       ——       Default website root directory
       --soft.example.com  ——       Another website root directory. 
                                     If Nginx, Fancyindex enabled by default.
-      --phpmyadmin        ——       phpMyAdmin, Access via http://Yourdomain:7772/
-      --adminer           ——       Adminer, Access via http://Yourdomain:7771/
+      --phpmyadmin        ——       phpMyAdmin, Access via http://YourServerIP:7772/
+      --adminer           ——       Adminer, Access via http://YourServerIP:7771/
 </pre>
 
 

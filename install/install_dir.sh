@@ -35,17 +35,20 @@ useradd -s /sbin/nologin -M -g mysql mysql
 #cp tz.php /mtimer/www/${mtimer_dir}/
 
 if [ "$MSQLTYPE" = "phpmyadmin" ]; then
+	iptables -I INPUT -p tcp --dport 7772 -j ACCEPT
 	Downloadfile phpMyAdmin/${phpmyadmin_dir}.zip
 	mkdir /mtimer/www/phpmyadmin
 	cp -Rf ${MUNPACKED_PATH}/${phpmyadmin_dir}/* /mtimer/www/phpmyadmin/
 	sed -i "2 s/^/exit;/" /mtimer/www/phpmyadmin/version_check.php
 	chown www:www -R /mtimer/www/phpmyadmin/
 else
+	iptables -I INPUT -p tcp --dport 7771 -j ACCEPT
 	Downloadfile adminer/${adminer_dir}.zip
 	mkdir /mtimer/www/adminer
 	cp -f ${MUNPACKED_PATH}/${adminer_dir}/${adminer_dir}.php /mtimer/www/adminer/index.php
 	chown www:www -R /mtimer/www/
 fi
+/etc/init.d/iptables save
 
 chmod -R 775 /mtimer/www
 chown -R www:www /mtimer/www

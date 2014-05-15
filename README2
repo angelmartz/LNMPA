@@ -148,8 +148,8 @@ Files  /mtimer            ——		 ALL
 			--example.com       ——       Default website root directory
 			--soft.example.com  ——       Another website root directory. 
                                     If Nginx, Fancyindex enabled by default.
-			--phpmyadmin        ——       phpMyAdmin, Access via http://Yourdomain:7772/
-			--adminer           ——       Adminer, Access via http://Yourdomain:7771/
+			--phpmyadmin        ——       phpMyAdmin, Access via http://YourServerIP:7772/
+			--adminer           ——       Adminer, Access via http://YourServerIP:7771/
 
 
 

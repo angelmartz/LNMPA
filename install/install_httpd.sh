@@ -35,6 +35,11 @@ cd ${LNMPA_PATH}
 cp -R /mtimer/server/httpd/htdocs /mtimer/www/
 chown -R www:www /mtimer/www
 sed -i "s#server/httpd/htdocs#www/htdocs#" /mtimer/server/httpd/conf/httpd.conf
+if [ "$MSQLTYPE" = "phpmyadmin" ]; then
+	sed -i "s#Listen 80#Listen 80\nListen 7772#" /mtimer/server/httpd/conf/httpd.conf
+else
+	sed -i "s#Listen 80#Listen 80\nListen 7771#" /mtimer/server/httpd/conf/httpd.conf
+fi
 sed -i 's/User daemon/User www/g' /mtimer/server/httpd/conf/httpd.conf
 sed -i 's/Group daemon/Group www/g' /mtimer/server/httpd/conf/httpd.conf
 sed -i 's/DirectoryIndex index.html/DirectoryIndex index.html index.htm index.php/g' /mtimer/server/httpd/conf/httpd.conf
