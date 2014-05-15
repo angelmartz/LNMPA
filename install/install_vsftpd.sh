@@ -7,6 +7,7 @@ cp -f ${MCONF_PATH}/ftp/user_list /etc/vsftpd/
 
 cp -f ${MCONF_PATH}/ftp/vsftpd-${machine}.conf /etc/vsftpd/vsftpd.conf
 
+sed -i 's/# chkconfig: - 60 50/# chkconfig: 345 60 50/g' /etc/init.d/vsftpd
 chkconfig vsftpd on
 service vsftpd start
 chown -R www:www /mtimer/www
